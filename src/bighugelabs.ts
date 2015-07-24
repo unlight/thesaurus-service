@@ -5,47 +5,66 @@ import {Readable, ReadableOptions} from "stream";
 var trumpet = require("trumpet");
 var request = require("request");
 
-export = function(options): Readable {
-	if (typeof options === "string") {
-		options = { query: options };
+class Bighugelabs extends Readable {
+
+	protected _base: string = "https://words.bighugelabs.com/";
+	protected _categorySelector: string = "h3";
+	protected _wordSelector: string = "h3 + ul.words a";
+	protected _query;
+
+	constructor(options) {
+		super({ objectMode: true });
+		if (typeof options === "string") {
+			options = { query: options };
+		}
+		var {query, lazy = false} = options;
+		this._query = query;
+
+		if (!lazy) {
+			process.nextTick(() => this.startReading());
+		}
 	}
-	var {query, lazy = false} = options;
-	var stream = new Readable({ objectMode: true });
-	var base: string = "https://words.bighugelabs.com/";
-	var url = base + query;
-	var tr = trumpet();
-	var blackList = ["rhymes with"];
-	var doEmit = true;
-	var category: string = null;
 
-	tr.selectAll("h3", (anchor) => {
-		anchor.createReadStream().on("data", (chunk) => {
-			category = chunk.toString();
-			doEmit = blackList.indexOf(category) == -1;
+	getRequestUrl() {
+		var url = this._base + this._query;
+		return url;
+	}
+
+	protected get source() {
+		return "bighugelabs";
+	}
+
+	startReading() {
+		var url = this.getRequestUrl();
+		var tr = trumpet();
+		var blackList = ["rhymes with"];
+		var doEmit = true;
+		var category: string = null;
+
+		tr.selectAll(this._categorySelector, (element) => {
+			element.createReadStream().on("data", (chunk) => {
+				category = chunk.toString();
+				doEmit = blackList.indexOf(category) == -1;
+			});
 		});
-	});
 
-	tr.selectAll("h3 + ul.words a", (anchor) => {
-		anchor.createReadStream().on("data", (chunk) => {
-			var word = chunk.toString();
-			stream.push({ word, category });
+		tr.selectAll(this._wordSelector, (element) => {
+			element.createReadStream().on("data", (chunk) => {
+				var word = chunk.toString();
+				this.push({ word, category, source: this.source });
+			});
 		});
-	});
 
-	tr.on("end", () => stream.push(null));
+		tr.on("end", () => this.push(null));
 
-	var startReading = () => {
 		request(url).pipe(tr);
-		startReading = () => { };
-	};
-
-	if (!lazy) {
-		startReading();
+		this.startReading = () => { };
 	}
 
-	stream._read = function() {
-		startReading();
-	};
+	_read() {
+		this.startReading();
+		return null;
+	}
+}
 
-	return stream;
-};
+export = Bighugelabs;

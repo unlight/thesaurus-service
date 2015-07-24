@@ -1,0 +1,57 @@
+{
+  "name": "thesaurus-service",
+  "version": "1.0.0",
+  "description": "Provides synonym for word, uses remote sites (words.bighugelabs.com, thesaurus.altervista.org, thesaurus.com, etc.)",
+  "main": "index.js",
+  "scripts": {},
+  "author": "S (http://rv-home.ru)",
+  "license": "Beerware",
+  "dependencies": {
+    "formatstring": "github:unlight/formatstring",
+    "merge2": "^0.3.6",
+    "request": "^2.57.0",
+    "trumpet": "^1.7.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-batch": "^1.0.5",
+    "gulp-debug": "^2.0.1",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-logger": "0.0.2",
+    "gulp-ng-annotate": "^1.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.7.6",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.2.4",
+    "is-readable-stream": "^1.0.0",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "~0.2.0",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17",
+    "stream-from-array": "^0.1.0",
+    "streammerge": "0.0.1",
+    "through2": "^2.0.0",
+    "typescript": "1.X"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unlight/thesaurus-service.git"
+  },
+  "keywords": [
+    "thesaurus",
+    "synonyms",
+    "equivalent",
+    "word",
+    "synonym",
+    "finder",
+    "words"
+  ],
+  "bugs": {
+    "url": "https://github.com/unlight/thesaurus-service/issues"
+  },
+  "homepage": "https://github.com/unlight/thesaurus-service#readme"
+}
