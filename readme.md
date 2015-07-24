@@ -6,9 +6,9 @@ USAGE
 -----
 ```js
 var ts = require("thesaurus-service");
-var streamTs = ts("development"); // streamTs is Readable stream
+var streamTs = ts("development"); // streamTs is a Readable stream
 streamTs.on("data", function(data) {
-	console.log("word", data.word); // evolutiong, rowthgrowing, maturation, ontogeny, ...
+	console.log(data.word); // evolutiong, rowthgrowing, maturation, ontogeny, ...
 });
 ```
 
