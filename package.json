@@ -3,7 +3,9 @@
   "version": "1.1.0",
   "description": "Provides synonym for word, uses remote sites (words.bighugelabs.com, thesaurus.altervista.org, thesaurus.com, etc.)",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+  		"test": "node test/main.js"
+  	},
   "author": "S (http://rv-home.ru)",
   "license": "Beerware",
   "dependencies": {
