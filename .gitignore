@@ -1,3 +1,4 @@
 /node_modules/
 *.suo
 ~*
+/tsd.json
