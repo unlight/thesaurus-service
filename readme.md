@@ -14,10 +14,12 @@ streamTs.on("data", function(data) {
 
 TODO
 ----
-- Add http://www.multitran.ru
 - Add http://moby-thesaurus.org/search?q=word
 
 CHANGELOG
 ---------
-1.0.0 (24 Jul 2015)
+1.0 (24 Jul 2015)
 - First release
+
+1.1 (2 Sep 2015)
+- Added http://www.multitran.ru

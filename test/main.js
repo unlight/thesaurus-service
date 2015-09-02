@@ -8,7 +8,7 @@ test("main test", function (t) {
 
 	t.equal("function", typeof stream);
 
-	var s = stream("stream");
+	var s = stream("dummy");
 
 	t.ok(s);
 	s.on("data", function (d) {

@@ -6,6 +6,7 @@ import Altervistaorg = require("./altervistaorg");
 import Bighugelabs = require("./bighugelabs");
 import CollinsDictionary = require("./collinsdictionary");
 import Thesauruscom = require("./thesauruscom");
+import Multitran = require("./multitran");
 
 function stream(q: string) {
 
@@ -14,6 +15,7 @@ function stream(q: string) {
 		new Altervistaorg(q),
 		new CollinsDictionary(q),
 		new Thesauruscom(q),
+		new Multitran(q)
 	]);
 
 	return stream;
