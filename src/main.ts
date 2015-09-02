@@ -7,18 +7,18 @@ import Bighugelabs = require("./bighugelabs");
 import CollinsDictionary = require("./collinsdictionary");
 import Thesauruscom = require("./thesauruscom");
 import Multitran = require("./multitran");
+import Mobythesaurus = require("./mobythesaurus");
 
-function stream(q: string) {
+export function stream(q: string) {
 
 	var stream = merge2([
 		new Bighugelabs(q),
 		new Altervistaorg(q),
 		new CollinsDictionary(q),
 		new Thesauruscom(q),
-		new Multitran(q)
+		new Multitran(q),
+		new Mobythesaurus(q)
 	]);
 
 	return stream;
 };
-
-export {stream};

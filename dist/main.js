@@ -5,13 +5,15 @@ var Bighugelabs = require("./bighugelabs");
 var CollinsDictionary = require("./collinsdictionary");
 var Thesauruscom = require("./thesauruscom");
 var Multitran = require("./multitran");
+var Mobythesaurus = require("./mobythesaurus");
 function stream(q) {
     var stream = merge2([
         new Bighugelabs(q),
         new Altervistaorg(q),
         new CollinsDictionary(q),
         new Thesauruscom(q),
-        new Multitran(q)
+        new Multitran(q),
+        new Mobythesaurus(q)
     ]);
     return stream;
 }

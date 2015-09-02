@@ -3,7 +3,7 @@ var test = require("tape");
 
 test("multitran", function (t) {
 
-	var Stream = require("./../build/multitran");
+	var Stream = require("./../dist/multitran");
 
 	t.assert(typeof Stream === "function", "should be a function");
 

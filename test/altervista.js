@@ -3,7 +3,7 @@ var test = require("tape");
 
 test("thesaurus.altervista.org service", function (t) {
 
-	var Stream = require("./../build/altervistaorg.js");
+	var Stream = require("./../dist/altervistaorg.js");
 
 	test("should be a function", function (t) {
       t.ok(typeof Stream === "function");
