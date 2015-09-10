@@ -9,6 +9,7 @@ var __extends = this.__extends || function (d, b) {
 var stream_1 = require("stream");
 var request = require("request");
 var format = require("formatstring");
+var NestedError = require("nested-error-stacks");
 var source = "altervistaorg";
 var Altervista = (function (_super) {
     __extends(Altervista, _super);
@@ -27,8 +28,20 @@ var Altervista = (function (_super) {
             key: "txXYFyF4UgFiNsFY3oB7"
         });
         request(url, function (error, response, body) {
-            var jsonResponse = JSON.parse(body).response;
-            jsonResponse.forEach(_this._parseList, _this);
+            if (error) {
+                _this.emit("error", error);
+            }
+            var jsonResponse;
+            try {
+                jsonResponse = JSON.parse(body).response;
+            }
+            catch (e) {
+                var error = new NestedError("Failed to parse JSON.", e);
+                _this.emit("error", error);
+            }
+            if (jsonResponse) {
+                jsonResponse.forEach(_this._parseList, _this);
+            }
             _this.push(null);
         });
     }

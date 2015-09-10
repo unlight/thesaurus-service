@@ -23,4 +23,4 @@ CHANGELOG
 
 1.2 (10 Sep 2015)
 - Fixed readme usage section
-- Fixed altervista
+- Fixed altervista (added error handler)

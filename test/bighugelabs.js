@@ -10,9 +10,9 @@ test("bighugelabs and similar service", function (t) {
 		t.ok(typeof Stream === "function");
 	
 		var isReadableStream = require("is-readable-stream");
-		var s1 = new Stream({ query: "user", lazy: true });
+		var s = new Stream({ query: "dummy", lazy: true });
 	
-	   t.ok(isReadableStream(s1));
+	   t.ok(isReadableStream(s));
 		t.end();
 	});
 

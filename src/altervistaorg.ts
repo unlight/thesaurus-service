@@ -4,6 +4,7 @@
 import {Readable, ReadableOptions} from "stream";
 import * as request from "request";
 var format = require("formatstring");
+var NestedError = require("nested-error-stacks");
 const source = "altervistaorg";
 
 interface IResponseElement {
@@ -28,8 +29,19 @@ class Altervista extends Readable {
 		});
 
 		request(url, (error, response, body) => {
-			var jsonResponse: Array<IResponseElement> = JSON.parse(body).response;
-			jsonResponse.forEach(this._parseList, this);
+			if (error) {
+				this.emit("error", error);
+			}
+			var jsonResponse: Array<IResponseElement>;
+			try {
+				jsonResponse = JSON.parse(body).response; 
+			} catch (e) {
+				var error = new NestedError("Failed to parse JSON.", e);
+				this.emit("error", error);
+			}
+			if (jsonResponse) {
+				jsonResponse.forEach(this._parseList, this);	
+			}
 			this.push(null);
 		});
 	}
@@ -42,7 +54,7 @@ class Altervista extends Readable {
 		var array: Array<string> = item.list.synonyms.split("|");
 		for (var index = 0; index < array.length; index++) {
 			var word = array[index];
-			var data = { word, category, source};
+			var data = { word, category, source };
 			this.push(data);
 		}
 	}

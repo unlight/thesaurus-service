@@ -19,8 +19,8 @@ gulp.task("tswatch", function() {
       verbose: false
    }, g.batch(function(events, done) {
       events
-         .pipe(g.tslint())
-         .pipe(g.tslint.report("verbose"))
+         // .pipe(g.tslint())
+         // .pipe(g.tslint.report("verbose"))
          //.pipe(g.sourcemaps.init())
          .pipe(g.typescript(tsOptions))
          //.pipe(g.sourcemaps.write())
