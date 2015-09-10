@@ -6,7 +6,7 @@ USAGE
 -----
 ```js
 var ts = require("thesaurus-service");
-var streamTs = ts("development"); // streamTs is a Readable stream
+var streamTs = ts.stream("development"); // streamTs is a Readable stream
 streamTs.on("data", function(data) {
 	console.log(data.word); // evolutiong, rowthgrowing, maturation, ontogeny, ...
 });
@@ -20,3 +20,7 @@ CHANGELOG
 1.1 (2 Sep 2015)
 - Added multitran.ru
 - Added moby-thesaurus.org
+
+1.2 (10 Sep 2015)
+- Fixed readme usage section
+- Fixed altervista
