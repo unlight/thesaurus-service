@@ -1,6 +1,6 @@
 {
   "name": "thesaurus-service",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Provides synonym for word, uses remote sites (words.bighugelabs.com, thesaurus.altervista.org, thesaurus.com, etc.)",
   "main": "index.js",
   "scripts": {
