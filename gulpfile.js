@@ -19,16 +19,16 @@ gulp.task("tswatch", function() {
       verbose: false
    }, g.batch(function(events, done) {
       events
-         // .pipe(g.tslint())
-         // .pipe(g.tslint.report("verbose"))
-         //.pipe(g.sourcemaps.init())
+      // .pipe(g.tslint())
+      // .pipe(g.tslint.report("verbose"))
+      //.pipe(g.sourcemaps.init())
          .pipe(g.typescript(tsOptions))
          //.pipe(g.sourcemaps.write())
          .pipe(gulp.dest(paths.dest));
       events.on("end", done);
-      events.on("data", function (file) {
-      	var niceRelativePath = file.path.slice(file.cwd.length + 1);
-      	g.util.log(g.util.colors.magenta(niceRelativePath), "was changed");
+      events.on("data", function(file) {
+         var niceRelativePath = file.path.slice(file.cwd.length + 1);
+         g.util.log(g.util.colors.magenta(niceRelativePath), "was changed");
       });
       events.on("error", g.util.beep);
    }));
@@ -44,6 +44,17 @@ gulp.task("compile", function() {
       .pipe(gulp.dest(paths.dest));
 });
 
+gulp.task("espower", function() {
+   gulp.src("test/bighugelabs.js")
+      .pipe(g.espower({
+         patterns: [
+            "t.ok(value, [message])"
+         ]
+      }))
+      .pipe(g.debug())
+      .pipe(gulp.dest("espower"))
+      .pipe(g.debug())
+});
 
 gulp.task('test', function(done) {
    // Be sure to return the stream

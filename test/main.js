@@ -3,6 +3,7 @@
 var test = require("tape");
 var main = require("./../");
 var stream = main.stream;
+var createStream = main.createStream; 
 
 test("main test", function (t) {
 
@@ -13,6 +14,14 @@ test("main test", function (t) {
 	t.ok(s);
 	s.on("data", function (d) {
 		t.ok(d, [d.word, d.source]);
+	});
+	s.on("end", t.end);
+});
+
+test.only("create stream by mask", function (t) {
+	var s = createStream("dummy", 8);
+	s.on("data", function (d) {
+		t.ok(d.source === "thesauruscom", d.word);
 	});
 	s.on("end", t.end);
 });

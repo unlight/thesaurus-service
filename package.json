@@ -11,6 +11,7 @@
   "dependencies": {
     "formatstring": "github:unlight/formatstring",
     "iconv-lite": "^0.4.11",
+    "issetbit": "^1.0.1",
     "merge2": "^0.3.6",
     "nested-error-stacks": "^1.0.1",
     "request": "^2.57.0",
