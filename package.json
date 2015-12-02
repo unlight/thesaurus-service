@@ -1,6 +1,6 @@
 {
   "name": "thesaurus-service",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Provides synonym for word, uses remote sites (words.bighugelabs.com, thesaurus.altervista.org, thesaurus.com, etc.)",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "S (http://rv-home.ru)",
   "license": "Beerware",
   "dependencies": {
-    "formatstring": "github:unlight/formatstring",
+    "formatstring": "2",
     "iconv-lite": "^0.4.11",
     "issetbit": "^1.0.1",
     "merge2": "^0.3.6",
