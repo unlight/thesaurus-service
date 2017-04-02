@@ -1,5 +1,7 @@
 thesaurus-service
 =================
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/unlight/thesaurus-service.svg)](https://greenkeeper.io/)
 Provides synonym for word, uses remote sites (words.bighugelabs.com, thesaurus.altervista.org, thesaurus.com, etc.)
 
 USAGE
